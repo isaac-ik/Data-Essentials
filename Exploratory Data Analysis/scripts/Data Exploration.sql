@@ -76,3 +76,24 @@ GROUP BY
 
 
 --Are some product lines under-represented in sales?
+
+SELECT COUNT( DISTINCT product_line)
+FROM gold.dim_products
+WHERE product_line != 'n/a'
+
+SELECT 
+	p.product_line, SUM(f.quantity) AS TotalQuantity, SUM(f.Sales_amount) AS TotalSales
+FROM 
+	gold.dim_products p
+LEFT JOIN 
+	gold.fact_sales f
+ON 
+	f.product_key = p.product_key
+WHERE 
+	p.product_line != 'n/a'
+GROUP BY 
+	p.product_line
+ORDER BY 
+	TotalSales DESC;
+	
+
