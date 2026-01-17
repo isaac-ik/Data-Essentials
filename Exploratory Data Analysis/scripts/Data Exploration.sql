@@ -50,6 +50,29 @@ GROUP BY
 
 --How many products per category, subcategory, and product_line?
 
+SELECT 
+	'Category' AS Dimension, category, COUNT(*)
+FROM 
+	gold.dim_products
+WHERE category IS NOT NULL
+GROUP BY 
+	category
+UNION ALL
+SELECT 
+	'Subcategory' AS Dimension, subcategory, COUNT(*)
+FROM 
+	gold.dim_products
+WHERE subcategory IS NOT NULL
+GROUP BY 
+	subcategory
+UNION ALL
+SELECT 
+	'Product Line' AS Dimension, product_line, COUNT(*)
+FROM 
+	gold.dim_products
+WHERE product_line != 'n/a'
+GROUP BY 
+	product_line;
 
 
 --Are some product lines under-represented in sales?
