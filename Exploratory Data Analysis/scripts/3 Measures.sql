@@ -11,6 +11,8 @@ FROM gold.fact_sales;
 
 
 -- Find the average selling price
+SELECT ROUND(AVG(price), 2) AS AveragePrice
+FROM gold.fact_sales
 
 -- Find the Total number of Orders
 
