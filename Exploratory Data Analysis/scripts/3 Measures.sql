@@ -29,4 +29,5 @@ SELECT COUNT(customer_id)
 FROM gold.dim_customers
 
 -- Find the total number of customers that has placed an order
-
+SELECT COUNT(*) AS totalRows, COUNT(DISTINCT customer_key) AS NOofOrderingCustomers
+FROM gold.fact_sales
