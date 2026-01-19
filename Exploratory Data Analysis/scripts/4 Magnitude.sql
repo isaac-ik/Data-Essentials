@@ -14,9 +14,18 @@ FROM gold.dim_customers
 WHERE gender != 'n/a'
 GROUP BY gender
 ORDER BY NoOfCustomers;
+
 -- Find total products by category
+SELECT category, COUNT(*)
+FROM gold.dim_products
+WHERE category IS NOT NULL
+GROUP BY category;
 
 -- What is the average costs in each category?
+SELECT category, ROUND(AVG(cost), 2)
+FROM gold.dim_products
+WHERE category IS NOT NULL
+GROUP BY category;
 
 -- What is the total revenue generated for each category?
 
