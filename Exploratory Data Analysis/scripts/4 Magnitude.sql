@@ -9,7 +9,11 @@ GROUP BY country
 ORDER BY NoOfCustomers DESC;
 
 -- Find total customers by gender
-
+SELECT gender, COUNT (*) AS NoOfCustomers
+FROM gold.dim_customers
+WHERE gender != 'n/a'
+GROUP BY gender
+ORDER BY NoOfCustomers;
 -- Find total products by category
 
 -- What is the average costs in each category?
