@@ -19,7 +19,14 @@ SELECT COUNT (DISTINCT order_number)
 FROM gold.fact_sales;
 
 --Find the total number of products
+SELECT COUNT(product_key) AS TotalProducts
+FROM gold.dim_products;
+
 
 -- Find the total number of customers
 
+SELECT COUNT(customer_id)
+FROM gold.dim_customers
+
 -- Find the total number of customers that has placed an order
+
