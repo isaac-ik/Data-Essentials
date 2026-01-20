@@ -28,8 +28,7 @@ Relationships:
 
 The logical data model defines the **analytical grain, join paths, and referential structure** used throughout the EDA.
 
-![Logical Data Model](scripts/assets/Data model PNG.png)
-
+![Logical Data Model](scripts/assets/Data%20model%20PNG.png)
 ---
 
 ## Project Structure
