@@ -11,6 +11,25 @@ The purpose of this project is to understand:
 
 The analysis serves as the foundation for advanced analytics and reporting coming next.
 
+
+
+## Logical Data Model
+
+The dataset follows a **star schema** with a central fact table and supporting dimension tables.
+
+- **fact_sales** represents transactional sales records  
+  *Grain: one row per product per order*
+- **dim_customers** stores customer attributes and demographics
+- **dim_products** stores product attributes and classifications
+
+Relationships:
+- `fact_sales.customer_key → dim_customers.customer_key`
+- `fact_sales.product_key → dim_products.product_key`
+
+The logical data model defines the **analytical grain, join paths, and referential structure** used throughout the EDA.
+
+> See `/scripts/assets/Data model PNG.png` for the UML logical data model diagram.
+
 ---
 
 ## Project Structure
