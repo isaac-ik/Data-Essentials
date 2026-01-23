@@ -1,73 +1,64 @@
-Project Description
-Advanced Analytics with SQL
-Overview
+# PROJECT DESCRIPTION: ADVANCED ANALYTICS
+## Overview
 
-This project demonstrates advanced analytical thinking using SQL, moving beyond basic aggregation to answer why performance changes, how value accumulates, and where action should be taken.
+This repository demonstrates **advanced analytical thinking using SQL**, moving beyond basic aggregation to answer:
 
-The analysis follows a systematic analytics framework, progressing from time-based trends to cumulative behavior, performance benchmarking, proportional contribution, segmentation, and decision-ready reporting.
+- how performance changes over time  
+- how value accumulates  
+- where performance deviates from expectations  
+- what contributes most to overall results  
+- how data can be segmented for decision-making  
 
-All analyses are implemented in PostgreSQL using:
+The project follows a **structured analytics framework**, progressing from trends to cumulative behavior, performance benchmarking, proportional analysis, segmentation, and reporting.
 
-window functions
+All analyses are implemented in **PostgreSQL** using:
+- window functions
+- analytical aggregates
+- ranking and segmentation logic
+- business-oriented query design
 
-analytical aggregates
+---
 
-ranking and segmentation logic
+## Analytics Framework
 
-business-oriented query design
+> **Advanced Analytics answers:**  
+> *“How is performance evolving, why is it happening, and how can we act?”*
 
-Analytics Framework
+---
 
-Advanced Analytics answers:
-“How is performance evolving, why is it happening, and how can we act?”
+## 1. Change-Over-Time Trends  
+**(Direction & Momentum)**
 
-1. Change-Over-Time Trends
+### Business Questions
+- Are sales increasing, decreasing, or flat over time?
+- Are trends consistent across categories or regions?
 
-(Direction & Momentum)
+### SQL Techniques Used
+- `DATE_TRUNC()`
+- `SUM()`
+- `LAG()`
+- Window functions with `OVER`, `PARTITION BY`, `ORDER BY`
 
-Business Questions
+### Example Analyses
+- Monthly sales trend by category  
+- Year-over-year sales growth  
+- Trend of average order value over time  
 
-Are sales increasing, decreasing, or flat over time?
+---
 
-Are trends consistent across categories or regions?
+## 2. Cumulative Analysis  
+**(Progress Toward Totals)**
 
-Techniques Used
+### Business Questions
+- How does value accumulate over time?
+- When are major milestones reached?
 
-DATE_TRUNC
+### SQL Techniques Used
+- `SUM() OVER (ORDER BY ...)`
+- Cumulative window frames
+- Time-based ordering
 
-SUM()
-
-window functions (OVER, PARTITION BY, ORDER BY)
-
-Dataset Examples
-
-Monthly sales trend by category
-
-Year-over-year growth in total sales
-
-
-2. Cumulative Analysis
-
-(Progress Toward Totals)
-
-Business Questions
-
-How does value accumulate over time?
-
-When are major milestones reached?
-
-Techniques Used
-
-SUM() OVER (ORDER BY …)
-
-cumulative window frames
-
-time-based ordering
-
-Dataset Examples
-
-Cumulative sales by year
-
-Cumulative quantity sold by category
-
-Revenue accumulation by top customers vs others
+### Example Analyses
+- Cumulative sales by year  
+- Cumulative quantity sold by category  
+- Revenue accumulation by customer group  
