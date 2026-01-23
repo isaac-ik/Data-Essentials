@@ -57,3 +57,52 @@ FROM vw_sales_base
 GROUP BY month
 ORDER BY month;
 
+---Product Performance (RANKING)
+CREATE OR REPLACE VIEW vw_product_performance AS
+SELECT
+    product_name,
+    category,
+    SUM(sales_amount) AS total_sales,
+    SUM(quantity) AS total_units
+FROM vw_sales_base
+GROUP BY product_name, category;
+
+--- Country Performance
+CREATE OR REPLACE VIEW vw_country_performance AS
+SELECT
+    country,
+    SUM(sales_amount) AS total_sales,
+    COUNT(DISTINCT customer_key) AS customers,
+    SUM(sales_amount) / COUNT(DISTINCT customer_key) AS sales_per_customer
+FROM vw_sales_base
+GROUP BY country;
+
+---- Category (Part to whole contribution) 
+
+CREATE OR REPLACE VIEW vw_category_share AS
+SELECT
+    category,
+    SUM(sales_amount) AS category_sales,
+    SUM(sales_amount) / SUM(SUM(sales_amount)) OVER () AS sales_share
+FROM vw_sales_base
+GROUP BY category;
+
+---Customer (Segmentation)
+
+CREATE OR REPLACE VIEW vw_customer_segments AS
+SELECT
+    customer_key,
+    country,
+    gender,
+    SUM(sales_amount) AS lifetime_value,
+    CASE
+        WHEN SUM(sales_amount) > 10000 THEN 'High Value'
+        WHEN SUM(sales_amount) BETWEEN 5000 AND 10000 THEN 'Medium Value'
+        ELSE 'Low Value'
+    END AS customer_segment
+FROM vw_sales_base
+GROUP BY customer_key, country, gender;
+
+
+
+
